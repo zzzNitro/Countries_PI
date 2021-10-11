@@ -3,24 +3,24 @@ const axios = require("axios");
 
 async function preCharge(){
     try {
-        let countries = (await axios.get("https://restcountries.com/v3/all")).data
-        countries = countries.map(e => {
+        let countries = (await axios.get("https://restcountries.com/v2/all")).data
+        countries = countries.map(country => {
             return {
-                id: e.cca3,
-                name: e.name.common,
-                capital: e.capital,
-                flag: e.flags[1],
-                continent: e.region,
-                subregion: e.subregion,
-                area: e.area,
-                population: e.population,
+                id: country.alpha3Code,
+                name: country.name,
+                flag: country.flag,
+                continent: country.region,
+                capital: country.capital,
+                subregion: country.subregion,
+                area: country.area,
+                population: country.population,
             }
         });
-        //countries = await Promise.all(countries.map(e => Country.findOrCreate({where: e})))
+        countries = await Promise.all(countries.map(e => Country.findOrCreate({where: e})))
         //console.log("Paises cargados bien")
         //return "salio bien"
         
-        console.log(countries[0])
+        //console.log(countries[0])
 
        /*
 
