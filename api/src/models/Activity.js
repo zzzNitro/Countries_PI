@@ -11,7 +11,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activity', {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1,
       allowNull: false,
       primaryKey: true
     },
@@ -20,16 +21,19 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     difficulty: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     duration: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     season: {
         type: DataTypes.STRING,
         allowNull: false,
     },
+  },
+  {
+    timestamps: false
   });
 };
