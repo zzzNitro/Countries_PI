@@ -1,4 +1,4 @@
-const { Country } = require("../db.js")
+const { Country, Activity, Op } = require("../db.js")
 const axios = require("axios");
 
 async function preCharge(){
@@ -18,7 +18,7 @@ async function preCharge(){
             }
         })
         countries = await Promise.all(countries.map(c => Country.findOrCreate({ where: c })))
-
+        console.log("Paises cargados: Si")
         return "Paises cargados: Si"
 
     } catch (error) {
@@ -29,17 +29,36 @@ async function preCharge(){
 
 async function getCountries(req, res, next){    
     try {
-        let allCountries = await Country.findAll()
-        res.send(allCountries)
+        let { name } = req.query;
+        let countries = []
+
+        if (name && name !== "") {
+            console.log(`Entro al if con name = ${name}`)
+            countries = await Country.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: `%${name}%`
+                    }
+                },
+                include: Activity
+            })
+            console.log(countries)
+            res.json(countries)
+        } else {
+            countries = await Country.findAll({ include: Activity })
+            res.send(countries)
+        }
+        
     } catch (error) {
         next(error)
     }
 }
 
+
 async function getCountriesById(req, res, next) {
     try {
         const id = req.params.id;
-        let country = await Country.findByPk(id) //{ include: Activity })
+        let country = await Country.findByPk(id)//, { include: Activity })
         return res.send(country)
     } catch (error) {
         console.log(error)
