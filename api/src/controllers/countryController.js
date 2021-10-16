@@ -29,9 +29,12 @@ async function preCharge(){
 
 async function getCountries(req, res, next){    
     try {
-        let { name } = req.query;
+        let { name, order, page } = req.query;
         let countries = []
+        page = page || 1
+        const countriesOnPage = 5
 
+        //#region NAME
         if (name && name !== "") {
             console.log(`Entro al if con name = ${name}`)
             countries = await Country.findAll({
@@ -42,12 +45,37 @@ async function getCountries(req, res, next){
                 },
                 include: Activity
             })
-            console.log(countries)
-            res.json(countries)
         } else {
             countries = await Country.findAll({ include: Activity })
-            res.send(countries)
         }
+        //#endregion
+
+        //#region ORDER
+        if(order === "asc" || !order || order === ""){
+            countries = countries.sort((a,b) =>{
+                return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+            })
+        }else{
+            countries = countries.sort((a,b) =>{
+                return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
+            })
+        }
+        //#endregion        
+        
+        //#region PAGE
+        let result = countries.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
+        //#endregion
+
+        return res.send({
+            result: result,
+            count: countries.length
+        })
+
+
+
+
+
+
         
     } catch (error) {
         next(error)
