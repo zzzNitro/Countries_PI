@@ -1,19 +1,24 @@
-import { GET_ALL_COUNTRIES, GET_ACTIVITY, POST_ACTIVITY } from "./actions"
+import { GET_ALL_COUNTRIES } from "./actions"
 
 
 const initialState = {
-    countries = [],
-    countriesByID = {},
-    activities = []
+    countries: [],
+    countriesByID: {},
+    activities: []
 }
 
 function reducer(state = initialState, { type, payload }) {
-    switch (type) {
-      
-      default: {
-        return state
-      }
+  switch (type) {
+    case GET_ALL_COUNTRIES: {
+        return {
+            ...state,
+            countries: payload,
+        }
+    }
+    default: {
+      return state
     }
   }
+}
   
-  export default reducer  
+export default reducer  
