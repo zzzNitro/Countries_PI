@@ -9,7 +9,7 @@ async function preCharge(){
             return {
                 id: country.cca3,
                 name: country.name.common,
-                flag: country.flags.png || "not defined",
+                flag: country.flags.svg || "not defined",
                 continent: country.region || "not defined",
                 capital: country.capital && country.capital[0] || "not defined",
                 subregion: country.subregion || "not defined",
@@ -63,7 +63,7 @@ async function getCountries(req, res, next){
         //#endregion        
         
         //#region PAGE
-        let result = countries.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
+        let result = countries.slice((countriesOnPage * (page -  1)) , (countriesOnPage * (page -  1)) + countriesOnPage )
         //#endregion
 
         return res.send({
