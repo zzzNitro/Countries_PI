@@ -29,10 +29,10 @@ async function preCharge(){
 
 async function getCountries(req, res, next){    
     try {
-        let { name, order, page } = req.query;
+        let { name, orderByName, orderByPop, filterByCont, page } = req.query;
         let countries = []
         page = page || 1
-        const countriesOnPage = 5
+        const countriesOnPage = 8
 
         //#region NAME
         if (name && name !== "") {
@@ -50,8 +50,8 @@ async function getCountries(req, res, next){
         }
         //#endregion
 
-        //#region ORDER
-        if(order === "asc" || !order || order === ""){
+        //#region ORDER NAME
+        if(orderByName === "asc" || !orderByName || orderByName === ""){
             countries = countries.sort((a,b) =>{
                 return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
             })
@@ -61,6 +61,25 @@ async function getCountries(req, res, next){
             })
         }
         //#endregion        
+
+        //#region ORDER BY POPULATION
+        if (orderByPop === 'higher') {
+            countries = countries.sort((a, b) => {
+                return a.population > b.population ? 1 : a.population < b.population ? -1 : 0
+            })
+        }
+        if (orderP === 'lower') {
+            countries = countries.sort((a, b) => {
+                return b.population > a.population ? 1 : b.population < a.population ? -1 : 0
+            })
+        }
+        //#endregion
+
+        //#region FILTER BY CONTINENT
+        if (filterByCont && filterByCont !== '') {
+            countries = countries.filter((country) => { return country.activities.filter((activity) => { return activity.name === filterA }).length })
+        }
+        //#endregion
         
         //#region PAGE
         let result = countries.slice((countriesOnPage * (page -  1)) , (countriesOnPage * (page -  1)) + countriesOnPage )

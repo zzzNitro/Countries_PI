@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCountries } from "../redux/actions"
+import { getCountries } from "../../redux/actions"
 
 
 export default function Home(){
@@ -16,6 +16,7 @@ export default function Home(){
 
     return (
         <div>
+            
             {countries.result &&
                 countries.result.map((e) => {
                 return (

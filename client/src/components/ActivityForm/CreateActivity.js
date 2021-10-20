@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function ActivityForm({ activities, handleChange, handleSubmit }) {
+export default function ActivityForm({ handleChange, handleSubmit }) {
   let [name, setName] = useState('')
   let [difficulty, setDifficulty] = useState('')
   let [season, setSeason] = useState('')
@@ -20,9 +20,12 @@ export default function ActivityForm({ activities, handleChange, handleSubmit })
 
         <label htmlFor='difficulty'>DIFFICULTY:</label>
         <input
+          type='number'
           name='difficulty'
           value={difficulty}
           onChange={(e) => handleChange(e, setDifficulty)}
+          min='1'
+          max='5'
         />
 
         <p>TEMPORADA:</p>
@@ -38,10 +41,11 @@ export default function ActivityForm({ activities, handleChange, handleSubmit })
         </div>
 
         <label htmlFor='duration'>DURATION:</label>
-        <input  
-          name='duration'
-          value={duration}
-          onChange={(e) => handleChange(e, setDuration)}
+        <input 
+            type='time'
+            name='duration'
+            value={duration}
+            onChange={(e) => handleChange(e, setDuration)}
         />
 
         <button type='submit'>Create</button>

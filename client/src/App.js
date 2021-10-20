@@ -1,10 +1,10 @@
 import './App.css';
 import React from 'react';
 import { Route } from 'react-router';
-import Home from './components/Home';
+import Home from './components/Home/';
 import Landing from './components/Landing';
-import NavBar from './components/NavBar'
-import Form from './components/Form'
+import NavBar from './components/NavBar/'
+import Form from './components/ActivityForm/'
 //import Detail from './components'
 
 
