@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/'
 import CountryDetail from './components/CountryDetail'
 import PostActivity from './components/ActivityForm/index';
 
+
 function App() {
   return (
     <div className='App'>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getActivities, getCountries, setPage } from '../../redux/actions'
 import CountryCard from '../CountryCard/CountryCard'
+import './index.css'
 
 function Home() {
     const dispatch = useDispatch();
