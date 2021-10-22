@@ -1,33 +1,36 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { getCountries } from "../../redux/actions"
+import { getActivities, getCountries, setPage } from '../../redux/actions'
+import CountryCard from '../CountryCard/CountryCard'
 
-
-export default function Home(){
-    let dispatch = useDispatch()
-    let countries = useSelector((state)=> state.countries)
+function Home() {
+    const dispatch = useDispatch();
+    const { countries, name, orderByPop, filterByCont, page } = useSelector(state => state);
 
     useEffect(() => {
-        dispatch(getCountries())
-        }, [dispatch])
+        dispatch(getCountries({}))
+        dispatch(getActivities({}))
+    }, [dispatch])
 
-    console.log('COUNTRIES', countries)
+    const changePage = (page) => {
+        dispatch(getCountries({ page, orderByPop, filterByCont, name }))
+        dispatch(setPage(page))
+    }
 
     return (
         <div>
-            
-            {countries.result &&
-                countries.result.map((e) => {
-                return (
-                    <div key={e.id}>
-                    <img src={e.flag} alt={e.name} />
-                    <p>{e.name}</p>
-                    <p>{e.continent}</p>
-                    </div>
-                )
-                })}
-            <Link to='/activities/create'><button>Create</button></Link>
+            <div>
+            {
+                countries?.result?.length > 0 && countries.result.map((c) => {
+                    return <CountryCard flag={c.flag} name={c.name} continent={c.continent} population={c.population} id={c.id} key={c.id} />
+                })
+            }
+            </div>
+            <button disabled={page - 1 === 0} onClick={() => { changePage(page - 1) }}>prev</button>
+                <label>{page}</label>
+            <button disabled={countries?.count <= (page * 8)} onClick={() => { changePage(page + 1) }}>next</button>
         </div>
     )
 }
+
+export default Home

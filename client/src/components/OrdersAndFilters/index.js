@@ -40,8 +40,8 @@ function OrdersAndFilters() {
             <div>
                 <select onChange={handleOrderByPopulation}>
                     <option value="population" label="Order by population"></option>
-                    <option value="higher">Higher</option>
-                    <option value="lower">Lower</option>
+                    <option value="higher">Lower</option>
+                    <option value="lower">Higher</option>
                 </select>
             </div>
             <div>

@@ -15,7 +15,7 @@ async function addActivity(req, res, next) {
 
             return Activity.create(newActivity)
             .then(async (activity) => {
-                await activity.addCountries(req.body.cca3)
+                await activity.addCountries(req.body.countries)
                 return activity
             })
             .then((activity) => res.send(activity))

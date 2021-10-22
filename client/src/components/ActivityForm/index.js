@@ -14,7 +14,7 @@ function validate(input) {
     return errors;
 };
 
-export default function PostActivity() {
+function PostActivity() {
     const dispatch = useDispatch();
     const { countries } = useSelector(state => state);
     const [input, setInput] = useState({
@@ -81,7 +81,7 @@ export default function PostActivity() {
             season: [],
             countries: []
         })
-        alert("You posted an activity successfully")
+        alert("Activity successfully posted!")
     };
 
     return (
@@ -102,6 +102,38 @@ export default function PostActivity() {
                 </div>
 
                 <div>
+                  <div>
+                    <select onChange={handleSeasonSelection}>
+                        <option id="" value="">Seasons</option>
+                        <option id="summer" value="summer">Summer</option>
+                        <option id="autumn" value="autumn">Autumn</option>
+                        <option id="winter" value="winter">Winter</option>
+                        <option id="spring" value="spring">Spring</option>
+                    </select>
+                    {errors.season && (<p>{errors.season}</p>)}
+                    {input.season.length > 0 && input.season.map(s => (
+                        <div key={s}>{s}</div>
+                    ))}
+                  </div>
+                    
+                </div>
+
+                <div>
+                    <select onChange={handleCountriesSelection} name="country">
+                        <option value="" key="">Countries</option>
+                        {
+                          countries.all && countries.all.map((c) => {
+                              return <option value={c.id} key={c.id}>{c.name}, {c.id}</option>
+                          })
+                        }
+                    </select>
+                    {errors.countries && (<p>{errors.countries}</p>)}
+                    {input.countries.length > 0 && input.countries.map(c => (
+                        <div key={c}>{c}</div>
+                    ))}
+                </div>
+
+                <div>
                 <label htmlFor='difficulty'>DIFFICULTY:</label>
                     <input
                       type='number'
@@ -118,104 +150,18 @@ export default function PostActivity() {
                 <label htmlFor='duration'>DURATION:</label>
                     <input 
                         type='number'
-                        name='difficulty'
-                        value={input.difficulty}
+                        name='duration'
+                        value={input.duration}
                         onChange={handleInputChange}
                         min='1'
                         max='24'
                     />
                     {errors.duration && (<p>{errors.duration}</p>)}
                 </div>
-                <div>
-                  <div onChange={handleSeasonSelection}>
-                    <input name='season' value='Verano' type='checkbox' />
-                    <label htmlFor='Verano'>Verano</label>
-                    <input name='season' value='Primavera' type='checkbox' />
-                    <label htmlFor='Primavera'>Primavera</label>
-                    <input name='season' value='Otoño' type='checkbox' />
-                    <label htmlFor='Otoño'>Otoño</label>
-                    <input name='season' value='Invierno' type='checkbox' />
-                    <label htmlFor='Invierno'>Invierno</label>
-                  </div>
-                    {errors.season && (<p>{errors.season}</p>)}
-                    {input.season.length > 0 && input.season.map(s => (
-                        <div key={s}>{s}</div>
-                    ))}
-                </div>
-
-                <div>
-                    <select onChange={handleCountriesSelection} name="country">
-                        <option value="" key="">Countries</option>
-                        {
-                            countries.all && countries.all.map((c) => {
-                                return <option value={c.id} key={c.id}>{c.name}, {c.id}</option>
-                            })
-                        }
-                    </select>
-                    {errors.countries && (<p>{errors.countries}</p>)}
-                    {input.countries.length > 0 && input.countries.map(c => (
-                        <div key={c}>{c}</div>
-                    ))}
-                </div>
                 <input disabled={Object.values(errors).length > 0} type="submit" value="create" />
             </form>
         </div>
     )
 }
-/*
-import React, { useEffect, useState } from 'react'
 
-export default function ActivityForm({ handleChange, handleSubmit }) {
-  let [name, setName] = useState('')
-  let [difficulty, setDifficulty] = useState('')
-  let [season, setSeason] = useState('')
-  let [duration, setDuration] = useState('')
-
-  return (
-    <div>
-      <h2>CREATE AN ACTIVITY</h2>
-
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name:</label>
-        <input
-          name='name'
-          value={name}
-          onChange={(e) => handleChange(e, setName)}
-        />
-
-        <label htmlFor='difficulty'>DIFFICULTY:</label>
-        <input
-          type='number'
-          name='difficulty'
-          value={difficulty}
-          onChange={(e) => handleChange(e, setDifficulty)}
-          min='1'
-          max='5'
-        />
-
-        <p>TEMPORADA:</p>
-        <div onChange={(e) => handleChange(e, setSeason)}>
-          <input name='season' value='Verano' type='radio' />
-          <label htmlFor='Verano'>Verano</label>
-          <input name='season' value='Primavera' type='radio' />
-          <label htmlFor='Primavera'>Primavera</label>
-          <input name='season' value='Otoño' type='radio' />
-          <label htmlFor='Otoño'>Otoño</label>
-          <input name='season' value='Invierno' type='radio' />
-          <label htmlFor='Invierno'>Invierno</label>
-        </div>
-
-        <label htmlFor='duration'>DURATION:</label>
-        <input 
-            type='time'
-            name='duration'
-            value={duration}
-            onChange={(e) => handleChange(e, setDuration)}
-        />
-
-        <button type='submit'>Create</button>
-      </form>
-    </div>
-  )
-}
-*/
+export default PostActivity

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Search from "../Search/index"
 import OrdersAndFilters from "../OrdersAndFilters/index"
 import { useDispatch } from "react-redux"
@@ -14,10 +14,10 @@ function NavBar() {
     
     return (
         <div>
-            <NavLink to="/home">Home</NavLink>
+            <Link to="/home">Home</Link>
             <OrdersAndFilters/>
             <Search/>
-            <NavLink to="/add">Create an activity</NavLink>
+            <Link to='/addActivity'><button>Create</button></Link>
         </div>
     )
 }

@@ -13,7 +13,7 @@ import {
 
 const initialState = {
     countries: [],
-    countriesByID: {},
+    country: {},
     activities: [],
     name: "",
     orderByName:"",

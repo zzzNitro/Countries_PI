@@ -31,12 +31,12 @@ async function getCountries(req, res, next){
     try {
         let { name, orderByName, orderByPop, filterByCont, page } = req.query;
         let countries = []
-        page = page || 1
+        page = page ? page : 1
         const countriesOnPage = 8
 
         //#region NAME
         if (name && name !== "") {
-            console.log(`Entro al if con name = ${name}`)
+            //console.log(`Entro al if con name = ${name}`)
             countries = await Country.findAll({
                 where: {
                     name: {
@@ -83,13 +83,14 @@ async function getCountries(req, res, next){
         
         //#region PAGE
         if (page > 1) {
-            let result = countries.slice((countriesOnPage * (page -  1)) , (countriesOnPage * (page -  1)) + countriesOnPage )
+            result = countries.slice((countriesOnPage * (page -  1)) , (countriesOnPage * (page -  1)) + countriesOnPage )
         } else {
             result = countries.slice(0, (countriesOnPage - 1))
         }
         //#endregion
 
         return res.send({
+            all: countries,
             result: result,
             count: countries.length
         })

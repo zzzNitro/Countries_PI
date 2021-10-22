@@ -4,8 +4,8 @@ import { Route } from 'react-router';
 import Home from './components/Home/';
 import Landing from './components/Landing';
 import NavBar from './components/NavBar/'
-import Form from './components/ActivityForm/'
 import CountryDetail from './components/CountryDetail'
+import PostActivity from './components/ActivityForm/index';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Route path='/home' component={NavBar}/>
       <Route exact path='/home' component={Home}/>
       <Route path='/countries/:id' component={CountryDetail}/>
-      <Route path='/add' component={Form}/>
+      <Route path='/addActivity' component={PostActivity}/>
       
 
     </div>

@@ -13,18 +13,17 @@ export const FILTER_COUNTRIES = 'FILTER_COUNTRIES'
 export const REMOVE_COUNTRY = 'REMOVE_COUNTRY';
 
 
-export function getCountries(name, order, page){
-    return (dispatch)=>{
-        axios.get(`http://localhost:3001/countries?name=${name||""}&order=${order||""}&page=${page||1}`)
-        .then((countries) => {
-            return dispatch({
-              type: GET_ALL_COUNTRIES,
-              payload: countries.data,
-            })
-          })
-        .catch((err) => {
-            console.log(err)
-          })
+export function getCountries({ page, orderByName, orderByPop, filterByCont, name }){
+    return async (dispatch)=>{
+      try {
+        const response = await axios.get(`http://localhost:3001/countries?page=${page ? page : 1}&orderByName=${orderByName ? orderByName : ""}&orderByPop=${orderByPop ? orderByPop : ""}&filterByCont=${filterByCont ? filterByCont : ""}&name=${name ? name : ""}`)
+        return dispatch({
+            type: GET_ALL_COUNTRIES,
+            payload: response.data
+        })
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
@@ -46,8 +45,7 @@ export const getCountryDetails = (id) => {
 export const getActivities = ({ name }) => {
   return async (dispatch) => {
       try {
-          let actName = name ? name : ""
-          const response = await axios.get(`http://localhost:3001/activities?name=${actName}`)
+          const response = await axios.get(`http://localhost:3001/activities?name=${name}`)
           return dispatch({
               type: GET_ACTIVITIES,
               payload: response.data
@@ -59,10 +57,10 @@ export const getActivities = ({ name }) => {
   }
 }
 
-export function postActivity(payload){
-    return async function (dispatch) {
+export function postActivity(activity){
+    return (dispatch) => {
       try {
-        axios.post(`http://localhost:3001/activities/`, payload)
+        axios.post(`http://localhost:3001/activities/`, activity)
             .then(() => {
                 return dispatch({
                     type: POST_ACTIVITY

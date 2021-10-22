@@ -1,5 +1,6 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
+import React from "react";
+import { NavLink } from "react-router-dom";
+
 
 function CountryCard({ flag, name, id, continent, population }) {
     return (
@@ -12,4 +13,4 @@ function CountryCard({ flag, name, id, continent, population }) {
     )
 }
 
-export default CountryCard
+export default  CountryCard
