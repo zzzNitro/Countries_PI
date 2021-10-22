@@ -11,6 +11,8 @@ export const SET_ORDER_BY_POP = 'SET_ORDER_BY_POP'
 export const ORDER_COUNTRIES = 'ORDER_COUNTRIES'
 export const FILTER_COUNTRIES = 'FILTER_COUNTRIES'
 export const REMOVE_COUNTRY = 'REMOVE_COUNTRY';
+export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY'
+export const SET_FILTER_BY_ACTIVITY = 'SET_FILTER_BY_ACTIVITY'
 
 
 export function getCountries({ page, orderByName, orderByPop, filterByCont, name }){
@@ -86,9 +88,16 @@ export const setOrderByName = (order) => {
   }
 }
 
-export const setFilterByCont = (activity) => {
+export const setFilterByCont = (continent) => {
   return {
       type: SET_FILTER_BY_CONT,
+      payload: continent
+  }
+}
+
+export const setFilterByActivity = (activity) => {
+  return {
+      type: SET_FILTER_BY_ACTIVITY,
       payload: activity
   }
 }
@@ -119,6 +128,13 @@ export const filterCountries = (continent) => {
   return {
       type: FILTER_COUNTRIES,
       payload: continent,
+  }
+}
+
+export const filterByActivity =(activity) => {
+  return {
+    type: FILTER_BY_ACTIVITY,
+    payload: activity
   }
 }
 

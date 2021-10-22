@@ -8,6 +8,7 @@ import {
   SET_PAGE,
   SET_ORDER_BY_POP,
   FILTER_COUNTRIES,
+  SET_FILTER_BY_ACTIVITY,
 } from "./actions"
 
 
@@ -19,7 +20,8 @@ const initialState = {
     orderByName:"",
     orderByPop:"",
     filterByCont:"",
-    page: 1
+    page: 1,
+    filterByAcitivity: "",
 }
 
 function reducer(state = initialState, { type, payload }) {
@@ -62,8 +64,14 @@ function reducer(state = initialState, { type, payload }) {
       case SET_FILTER_BY_CONT:
           return {
               ...state,
-              filterC: payload
+              filterByCont: payload
           }
+      case SET_FILTER_BY_ACTIVITY:
+          return {
+            ...state,
+            filterByAcitivity: payload
+          }
+
       case FILTER_COUNTRIES:
           let newCountries = state.countries.all.filter(c => {
               return c.continent === payload

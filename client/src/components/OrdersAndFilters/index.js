@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, setOrderByPop, setFilterByCont, setOrderByName, filterCountries } from '../../redux/actions'
+import { getCountries, setOrderByPop, setFilterByCont, setOrderByName, filterCountries, filterByActivity } from '../../redux/actions'
 import './index.css'
 
 function OrdersAndFilters() {
-    const { page, name, orderByName, orderByPop, filterByCont, activities } = useSelector(state => state)
+    const { page, name, orderByName, orderByPop, filterByCont, activities, filterByActivity } = useSelector(state => state)
     const dispatch = useDispatch()
 
     const handleOrderByName = (e) => {
@@ -25,8 +25,14 @@ function OrdersAndFilters() {
         }}
 
     const filterByActivities = (e) => {
+        if (e.target.value !== ""){
+            dispatch(filterCountries(e.target.value))
+        }
+
+
+
         dispatch(setFilterByCont(e.target.value))
-        dispatch(getCountries({ page, name, orderByName, orderByPop, filterByCont: e.target.value }))
+        dispatch(getCountries({ page, name, orderByName, orderByPop, filterByCont, filterByActivities: e.target.value }))
     }
 
     return (
