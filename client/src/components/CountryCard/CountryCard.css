@@ -1,27 +1,15 @@
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+/* On mouse-over, add a deeper shadow */
 .card:hover {
-    box-shadow: 5px 10px 20px 1px rgba(255, 255, 255, 0.273) !important;
-    transition: all 0.7s linear;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
   
-.card-body {
-    padding: 2rem 0 !important;
-}
-
-.card-text {
-    padding: 0.3rem 1rem;
-    font-size: 1rem;
-}
-
-.overflow {
-    overflow: hidden;
-}
-
-.card-img-top {
-    width: 25%;
-    transform: scale(1);
-    transition: all 0.2s ease-in-out;
-}
-
-.card-img-top:hover {
-transform: scale(1.1);
+/* Add some padding inside the card container */
+.container {
+padding: 2px 16px;
 }

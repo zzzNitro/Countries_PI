@@ -14,8 +14,8 @@ function NavBar() {
     }, [dispatch])
     
     return (
-        <div className="navbar">
-            <ul className="navbar-nav">
+        <div id="navbar">
+            <ul >
                 <li><Link to="/home">Home</Link></li>
                 <li><Search /></li>
                 <li><OrdersAndFilters /></li>

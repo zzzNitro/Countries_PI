@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 export default function Landing(){
     return (<div className="landing">
                 <NavLink to="/home">
-                    <img className="logo" src="#" alt="to home"/>
+                    <div id="earth"></div>
                 </NavLink>
             </div>)
 }
