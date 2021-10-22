@@ -32,7 +32,7 @@ async function getCountries(req, res, next){
         let { name, orderByName, orderByPop, filterByCont, page } = req.query;
         let countries = []
         page = page ? page : 1
-        const countriesOnPage = 8
+        const countriesOnPage = 10
 
         //#region NAME
         if (name && name !== "") {
@@ -51,7 +51,7 @@ async function getCountries(req, res, next){
         //#endregion
 
         //#region ORDER NAME
-        if(orderByName === "asc" || !orderByName || orderByName === ""){
+        if(orderByName === "Asc" || !orderByName || orderByName === ""){
             countries = countries.sort((a,b) =>{
                 return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
             })
@@ -104,7 +104,7 @@ async function getCountries(req, res, next){
 async function getCountriesById(req, res, next) {
     try {
         const id = req.params.id;
-        let country = await Country.findByPk(id)//, { include: Activity })
+        let country = await Country.findByPk(id, { include: Activity })
         return res.send(country)
     } catch (error) {
         console.log(error)

@@ -1,6 +1,6 @@
 import React from "react";
 
-function ActivityCard({name, difficulty, duration, season }) {
+function ActivityCard({ name, difficulty, duration, season }) {
     return (
         <div>
                 <h4>Activity: {name}</h4>

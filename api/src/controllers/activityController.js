@@ -1,29 +1,25 @@
 const { Activity, Country, Op } = require('../db');
 
 async function addActivity(req, res, next) {
-    try {
-        const { name, difficulty, duration, season } = req.body; //destructuring del body sin cca3
-        if (!name || !difficulty || !season || !duration) {
-            res.status(404).send('Faltan propiedades');
-        } else {
-            const newActivity = {
-                name, 
-                difficulty,
-                duration,
-                season,
-            }
-
-            return Activity.create(newActivity)
-            .then(async (activity) => {
-                await activity.addCountries(req.body.countries)
-                return activity
-            })
-            .then((activity) => res.send(activity))
+    const { name, difficulty, duration, season } = req.body; //destructuring del body sin cca3
+    if (!name || !difficulty || !season || !duration) {
+        res.status(404).send('Faltan propiedades');
+    } else {
+        const newActivity = {
+            name, 
+            difficulty,
+            duration,
+            season,
         }
-    } catch (error){
-        console.log(error)
+
+        return Activity.create(newActivity)
+        .then(async (activity) => {
+            await activity.addCountries(req.body.countries)
+            return activity
+        })
+        .then((activity) => res.send(activity))
+        .catch((error)=> next(error))
     }
-    
 }
 
 async function getActivities(req, res, next) {

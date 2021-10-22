@@ -37,22 +37,23 @@ function CountryDetails(props) {
                         <p>Capital: {country.capital}</p>
                         <p>Continent: {country.continent}</p>
                         <p>Subregion: {country.subregion}</p>
-                        <p>Area: {country.area}</p>
+                        <p>Area: {country.area} km2</p>
                         <p>Population: {country.population}</p>
                         <div><h3>Actividades Turisticas:</h3>
-                            {country.activities > 0 ? country.activities.map(activity => {
-                                return <ActivityCard key={activity.id}
+                            {country.activities.length > 0 ? country.activities.map(activity => {
+                                return <ActivityCard 
+                                key={activity.name}
                                 name={activity.name}
                                 difficulty={activity.difficulty}
                                 duration={activity.duration}
-                                season={activity.season}
+                                season={activity.season.join(', ').trim()}
                                 />
                             }): "Aún no hay turistas que hayan agregado sus experiencias"}
                             
                         </div>
                     </React.Fragment>
                     :
-                    <div>Loading...</div>
+                    <div>Cargando...</div>
             } 
             </div>
             

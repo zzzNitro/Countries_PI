@@ -28,7 +28,7 @@ function Home() {
             </div>
             <button disabled={page - 1 === 0} onClick={() => { changePage(page - 1) }}>prev</button>
                 <label>{page}</label>
-            <button disabled={countries?.count <= (page * 8)} onClick={() => { changePage(page + 1) }}>next</button>
+            <button disabled={countries?.count <= (page * 10)} onClick={() => { changePage(page + 1) }}>next</button>
         </div>
     )
 }

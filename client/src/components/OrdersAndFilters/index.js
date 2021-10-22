@@ -32,7 +32,7 @@ function OrdersAndFilters() {
         <div>
             <div>
                 <select onChange={handleOrderByName}>
-                    <option value="name" label="Alphabetic"></option>
+                  <optgroup label="Order alphabetic"></optgroup>
                     <option value="Asc">A-Z</option>
                     <option value="Desc">Z-A</option>
                 </select>
