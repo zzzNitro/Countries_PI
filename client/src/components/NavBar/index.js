@@ -14,17 +14,11 @@ function NavBar() {
     }, [dispatch])
     
     return (
-        <div id="navbar">
-            <ul >
-                <li><Link to="/home">Home</Link></li>
+        <div className="containerNB">
+                <li><Link to="/home" className="linkNB">Home</Link></li>
                 <li><Search /></li>
                 <li><OrdersAndFilters /></li>
                 <li><Link to='/addActivity'><button>Create</button></Link></li>
-                
-                
-                
-                
-            </ul>
         </div>
     )
 }
