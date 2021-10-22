@@ -1,32 +1,25 @@
-import React, {useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { getCountries } from '../../redux/actions'
+import React, { useEffect } from "react"
+import { NavLink } from "react-router-dom"
+import Search from "../Search/index"
+import OrdersAndFilters from "../OrdersAndFilters/index"
+import { useDispatch } from "react-redux"
+import { getCountries } from "../../redux/actions"
 
-function Nav() {
-    const [input,setInput] = useState("")
+function NavBar() {
     const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(getCountries())
-    },[dispatch])
-
-    const handleInput = (event)=>{
-    setInput(event.target.value)
-    }
-    const buscar = ()=>{
-        dispatch(getCountries(input))
-
-    }
+    
+    useEffect(() => {
+        dispatch(getCountries({}))
+    }, [dispatch])
+    
     return (
-        <div >
-            <Link to="/" > Landing</Link>
-            <Link to="/home" > Home</Link>
-            <Link to="/add" > Create Activity</Link>
-            <input type="text" placeholder="Type a country" onChange={handleInput} value={input} />
-            <button onClick={buscar}>Buscar</button>
+        <div>
+            <NavLink to="/home">Home</NavLink>
+            <OrdersAndFilters/>
+            <Search/>
+            <NavLink to="/add">Create an activity</NavLink>
         </div>
     )
 }
 
-export default Nav
+export default NavBar

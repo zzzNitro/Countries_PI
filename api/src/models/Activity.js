@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     season: {
-        type: DataTypes.STRING,
+        type: DataTypes.JSON,
         allowNull: false,
     },
   },

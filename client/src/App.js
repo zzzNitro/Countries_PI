@@ -5,15 +5,15 @@ import Home from './components/Home/';
 import Landing from './components/Landing';
 import NavBar from './components/NavBar/'
 import Form from './components/ActivityForm/'
-//import Detail from './components'
-
+import CountryDetail from './components/CountryDetail'
 
 function App() {
   return (
     <div className='App'>
       <Route exact path='/' component={Landing}/>
-      <Route path='/' component={NavBar}/>
-      <Route path='/home' component={Home}/>
+      <Route path='/home' component={NavBar}/>
+      <Route exact path='/home' component={Home}/>
+      <Route path='/countries/:id' component={CountryDetail}/>
       <Route path='/add' component={Form}/>
       
 

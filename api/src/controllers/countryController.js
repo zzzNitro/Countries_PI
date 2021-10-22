@@ -68,7 +68,7 @@ async function getCountries(req, res, next){
                 return a.population > b.population ? 1 : a.population < b.population ? -1 : 0
             })
         }
-        if (orderP === 'lower') {
+        if (orderByPop === 'lower') {
             countries = countries.sort((a, b) => {
                 return b.population > a.population ? 1 : b.population < a.population ? -1 : 0
             })
@@ -82,19 +82,17 @@ async function getCountries(req, res, next){
         //#endregion
         
         //#region PAGE
-        let result = countries.slice((countriesOnPage * (page -  1)) , (countriesOnPage * (page -  1)) + countriesOnPage )
+        if (page > 1) {
+            let result = countries.slice((countriesOnPage * (page -  1)) , (countriesOnPage * (page -  1)) + countriesOnPage )
+        } else {
+            result = countries.slice(0, (countriesOnPage - 1))
+        }
         //#endregion
 
         return res.send({
             result: result,
             count: countries.length
         })
-
-
-
-
-
-
         
     } catch (error) {
         next(error)
