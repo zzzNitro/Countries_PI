@@ -1,38 +1,32 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, setOrderByPop, setFilterByCont, setOrderByName, filterCountries, filterByActivity } from '../../redux/actions'
+import { getCountries, setOrderByPop, setFilterByAct, setOrderByName, filterCountries } from '../../redux/actions'
 import './index.css'
 
 function OrdersAndFilters() {
-    const { page, name, orderByName, orderByPop, filterByCont, activities, filterByActivity } = useSelector(state => state)
+    const { page, name, orderByName, orderByPop, filterByAct, activities } = useSelector(state => state)
     const dispatch = useDispatch()
 
     const handleOrderByName = (e) => {
         dispatch(setOrderByName(e.target.value))
-        dispatch(getCountries({ page, name, orderByName: e.target.value, orderByPop, filterByCont }))
+        dispatch(getCountries({ page, name, orderByName: e.target.value, orderByPop, filterByAct }))
     }
 
     const handleOrderByPopulation = (e) => {
         dispatch(setOrderByPop(e.target.value))
-        dispatch(getCountries({ page, name, filterByCont, orderByName, orderByPop: e.target.value }))
+        dispatch(getCountries({ page, name, filterByAct, orderByName, orderByPop: e.target.value }))
     }
 
     const filterByContinent = (e) => {
         if (e.target.value !== 'filter') {
             dispatch(filterCountries(e.target.value))
         } else{
-            dispatch(getCountries({page, name, orderByName, orderByPop, filterByCont}))
+            dispatch(getCountries({page, name, orderByName, orderByPop, filterByAct}))
         }}
 
     const filterByActivities = (e) => {
-        if (e.target.value !== ""){
-            dispatch(filterCountries(e.target.value))
-        }
-
-
-
-        dispatch(setFilterByCont(e.target.value))
-        dispatch(getCountries({ page, name, orderByName, orderByPop, filterByCont, filterByActivities: e.target.value }))
+        dispatch(setFilterByAct(e.target.value))
+        dispatch(getCountries({ page, name, orderByName, orderByPop, filterByAct: e.target.value }))
     }
 
     return (
@@ -66,11 +60,19 @@ function OrdersAndFilters() {
                             </select>
                         </li>
                         <li>
+                            {console.log(activities)}
+                            {console.log("chao")}
+                            {console.log(page)}
+                            {console.log(name)}
+                        </li>
+                        <li>
                             <select onChange={filterByActivities}>
                                 <option key="-1" value="" label="Filter by activity"></option>
+                                
                                 {activities.activities && activities.activities.map((activity, i) => (
                                     <option key={i} value={activity.name} label={activity.name}></option>
                                 ))}
+
                             </select>
                         </li>
                     </ul>

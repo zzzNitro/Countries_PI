@@ -7,7 +7,7 @@ import '../CountryCard/CountryCard.css'
 
 function Home() {
     const dispatch = useDispatch();
-    const { countries, name, orderByPop, filterByCont, page } = useSelector(state => state);
+    const { countries, name, orderByPop, filterByActivity, page } = useSelector(state => state);
 
     useEffect(() => {
         dispatch(getCountries({}))
@@ -15,7 +15,7 @@ function Home() {
     }, [dispatch])
 
     const changePage = (page) => {
-        dispatch(getCountries({ page, orderByPop, filterByCont, name }))
+        dispatch(getCountries({ page, orderByPop, filterByActivity, name }))
         dispatch(setPage(page))
     }
 

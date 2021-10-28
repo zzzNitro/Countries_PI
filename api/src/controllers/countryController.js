@@ -29,7 +29,7 @@ async function preCharge(){
 
 async function getCountries(req, res, next){    
     try {
-        let { name, orderByName, orderByPop, filterByCont, page } = req.query;
+        let { name, orderByName, orderByPop, filterByAct, page } = req.query;
         let countries = []
         page = page ? page : 1
         const countriesOnPage = 10
@@ -75,9 +75,9 @@ async function getCountries(req, res, next){
         }
         //#endregion
 
-        //#region FILTER BY CONTINENT
-        if (filterByCont && filterByCont !== '') {
-            countries = countries.filter((country) => { return country.activities.filter((activity) => { return activity.name === filterA }).length })
+        //#region FILTER BY ACTIVITY
+        if (filterByAct && filterByAct !== '') {
+            countries = countries.filter((country) => { return country.activities.filter((activity) => { return activity.name === filterByAct }).length })
         }
         //#endregion
         

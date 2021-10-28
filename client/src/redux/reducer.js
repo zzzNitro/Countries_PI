@@ -4,11 +4,10 @@ import {
   GET_ACTIVITIES,
   SET_NAME,
   SET_ORDER_BY_NAME,
-  SET_FILTER_BY_CONT,
+  SET_FILTER_BY_ACT,
   SET_PAGE,
   SET_ORDER_BY_POP,
   FILTER_COUNTRIES,
-  SET_FILTER_BY_ACTIVITY,
 } from "./actions"
 
 
@@ -19,9 +18,8 @@ const initialState = {
     name: "",
     orderByName:"",
     orderByPop:"",
-    filterByCont:"",
+    filterByAct:"",
     page: 1,
-    filterByAcitivity: "",
 }
 
 function reducer(state = initialState, { type, payload }) {
@@ -61,15 +59,10 @@ function reducer(state = initialState, { type, payload }) {
               ...state,
               orderByPop: payload
           }
-      case SET_FILTER_BY_CONT:
+      case SET_FILTER_BY_ACT:
           return {
               ...state,
-              filterByCont: payload
-          }
-      case SET_FILTER_BY_ACTIVITY:
-          return {
-            ...state,
-            filterByAcitivity: payload
+              filterByActivity: payload
           }
 
       case FILTER_COUNTRIES:
