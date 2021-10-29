@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getCountries, postActivity } from '../../redux/actions';
+import './index.css'
 
 function validate(input) {
     const errors = {};
@@ -83,17 +84,18 @@ function PostActivity() {
         })
         alert("Activity successfully posted!")
     };
-
+    
     return (
-        <div>
-            <div>
+        <div className="react-form">
+            <div className="home">
                 <NavLink to="/home">Home</NavLink>
             </div>
-            <h2>CREATE AN ACTIVITY</h2>
             <form onSubmit={onSubmit}>
-                <div>
+            <h2 className="form-input">CREATE AN ACTIVITY</h2>
+                <div className="form-group">
                     <label htmlFor='name'>Name:</label>
                     <input
+                      className="form-input"
                       name='name'
                       value={input.name}
                       onChange={handleInputChange}
@@ -101,7 +103,7 @@ function PostActivity() {
                     {errors.name && (<p>{errors.name}</p>)}
                 </div>
 
-                <div>
+                <div className="seasons">
                   <div>
                     <select onChange={handleSeasonSelection}>
                         <option id="" value="">Seasons</option>
@@ -118,7 +120,7 @@ function PostActivity() {
                     
                 </div>
 
-                <div>
+                <div className="countries">
                     <select onChange={handleCountriesSelection} name="country">
                         <option value="" key="">Countries</option>
                         {
@@ -133,7 +135,7 @@ function PostActivity() {
                     ))}
                 </div>
 
-                <div>
+                <div className="difficulty">
                 <label htmlFor='difficulty'>DIFFICULTY:</label>
                     <input
                       type='number'
@@ -146,7 +148,7 @@ function PostActivity() {
                     {errors.difficulty && (<p>{errors.difficulty}</p>)}
                 </div>
 
-                <div>
+                <div className="duration">
                 <label htmlFor='duration'>DURATION:</label>
                     <input 
                         type='number'
@@ -158,7 +160,7 @@ function PostActivity() {
                     />
                     {errors.duration && (<p>{errors.duration}</p>)}
                 </div>
-                <input disabled={Object.values(errors).length > 0} type="submit" value="create" />
+                <input id="formButton" className="btn" disabled={Object.values(errors).length > 0} type="submit" value="Create" />
             </form>
         </div>
     )

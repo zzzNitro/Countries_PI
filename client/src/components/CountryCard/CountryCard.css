@@ -1,130 +1,87 @@
-.blog-container {
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: hsla(0, 0, 0, .2) 0 4px 2px -2px;
-    font-family: "adelle-sans", sans-serif;
-    font-weight: 100;
-    margin: 48px auto;
-    width: 20rem;
-    @media screen and (min-width: 480px) {
-      width: 28rem;
-    }
-    @media screen and (min-width: 767px) {
-      width: 40rem;
-    }
-    @media screen and (min-width: 959px) {
-      width: 50rem;
-    }
-  }
+body {
+  background: hsla(210, 20%, 90%, 1);
+  padding: 2em 0;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+}
 
-  .blog-cover {
-    
-    background-size: cover;
-    border-radius: 5px 5px 0 0;
-    height: 15rem;
-    box-shadow: inset hsla(0, 0, 0, .2) 0 64px 64px 16px;
-  }
-  .blog-container a {
-    color: #4d4dff;
-    text-decoration: none;
-    transition: .25s ease;
-    
-  }
-  
-  
-  .blog-body {
-    margin: 0 auto;
-    width: 80%;
-  }
-  .video-body {
-    height: 100%;
-    width: 100%;
-  }
-  .blog-title h1 a {
-    color: #333;
-    font-weight: 100;
-  }
-  .blog-summary p {
-    color: lighten(#333, 10%);
-  }
-  .blog-tags ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    list-style: none;
-    padding-left: 0;
-  }
-  .blog-tags li + li {
-    margin-left: .5rem;
-  }
-  .blog-tags a {
-    border: 1px solid lighten(#333, 40%);
-    border-radius: 3px;
-    color: lighten(#333, 40%);
-    font-size: .75rem;
-    height: 1.5rem;
-    line-height: 1.5rem;
-    letter-spacing: 1px;
-    padding: 0 .5rem;
-    text-align: center;
-    text-transform: uppercase;
-    white-space: nowrap;
-    width: 5rem;
-  }
-  
-  
-  .blog-footer {
-    border-top: 1px solid lighten(#333, 70%);
-    margin: 0 auto;
-    padding-bottom: .125rem;
-    width: 80%;
-  }
-  .blog-footer ul {
-    list-style: none;
-    display: flex;
-    flex: row wrap;
-    justify-content: flex-end;
-    padding-left: 0;
-  }
-  .blog-footer li:first-child {
-    margin-right: auto;
-  }
-  .blog-footer li + li {
-    margin-left: .5rem;
-  }
-  .blog-footer li {
-    color: lighten(#333, 40%);
-    font-size: .75rem;
-    height: 1.5rem;
-    letter-spacing: 1px;
-    line-height: 1.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    position: relative;
-    white-space: nowrap;
-    
-  }
-  .comments {
-    margin-right: 1rem;
-  }
-  .published-date {
-    border: 1px solid lighten(#333, 40%);
-    border-radius: 3px;
-    padding: 0 .5rem;
-  }
-  .numero {
-    position: relative;
-    top: -0.5rem;
-  }
-  
-  
-  .icon-star,
-  .icon-bubble {
-    fill: lighten(#333, 40%);
-    height:24px;
-    margin-right: .5rem;
-    transition: .25s ease;
-    width: 24px;
-    
-  }
-  
+h1, h2, h3, h5 {
+  margin: 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em;
+  margin-bottom: 0.2em;
+  line-height: 1.2;
+  color: #222
+}
+
+.header h3 {
+  font-weight: 400;
+  color: #555;
+  width: 30em;
+}
+
+.cards {
+  display: flex;
+  align-items: flex-start;
+    justify-content: center;
+}
+
+.card {
+  background: #fff;
+  width: 24em;
+  border-radius: 0.6em;
+  margin: 1em;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+  transition: all ease 200ms;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+}
+
+.card img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card h2 {
+  color: #222;
+  margin-top: -0.2em;
+  line-height: 1.4;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  transition: all ease-in 100ms;
+}
+
+.card p {
+  color: #777;
+}
+
+.card h5 {
+  color: #bbb;
+  font-weight: 700;
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  margin: 1.4em 0 0 0;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 1.2em;
+}

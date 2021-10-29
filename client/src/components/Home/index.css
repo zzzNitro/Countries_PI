@@ -38,3 +38,8 @@
 	cursor: pointer;
 }
 
+.cards {
+	display: flex;
+	align-items: flex-start;
+	  justify-content: center;
+  }

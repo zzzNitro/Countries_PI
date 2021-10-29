@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 
 function CountryCard({ flag, name, id, continent, population }) {
     return (
-        <div className="blog-container">
-            <NavLink activeClassName="blog-cover" to={`/countries/${id}`}><img src={flag} alt='' /></NavLink>
-            <div className="blog-body">
+        <div className="card">
+            <img src={flag} alt='' />
+            <div className="card-body">
                 <div className="blog-title">
                     <h4 >{name}</h4>
                 </div>
