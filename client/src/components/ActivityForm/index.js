@@ -90,7 +90,7 @@ function PostActivity() {
             <div className="home">
                 <NavLink to="/home">Home</NavLink>
             </div>
-            <form onSubmit={onSubmit}>
+            <form className="actForm" onSubmit={onSubmit}>
             <h2 className="form-input">CREATE AN ACTIVITY</h2>
                 <div className="form-group">
                     <label htmlFor='name'>Name:</label>

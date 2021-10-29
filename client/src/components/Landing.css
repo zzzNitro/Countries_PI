@@ -8,7 +8,7 @@ body {
   background-size: cover;
 }
 
-img {
+.wind-rose {
   position: absolute;
   bottom: 2.33vw;
   left: 7.8vw;

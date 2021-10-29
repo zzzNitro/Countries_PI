@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { getActivities, getCountryDetails, setPage, removeCountry } from "../../redux/actions"
 import ActivityCard from '../ActivityForm/ActivityCard'
 import './index.css'
@@ -26,15 +26,16 @@ function CountryDetails(props) {
     }
 
     return (
-        <div>
-            <button className="linkCD" onClick={goBack}>Go back</button>
-            <div className="containerCD">
+        <div className="container detail">
+            <Link to="/home">Home</Link>
+            <div className="expand details">
+            
                {
                 country?.name ?
                     <React.Fragment>
                         <h4>{country.name}</h4>
                         <h5>Código de país: {country.id}</h5>
-                        <img className="flag" src={country.flag} alt='' />
+                        <img className="flag detail" src={country.flag} alt='' />
                         <p>Capital: {country.capital}</p>
                         <p>Continent: {country.continent}</p>
                         <p>Subregion: {country.subregion}</p>

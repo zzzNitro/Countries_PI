@@ -20,8 +20,8 @@ function Home() {
     }
 
     return (
-        <div className="wrapperH">
-            <div className="cards">
+        <div className="body">
+            <div className="grid">
             {
                 countries?.result?.length > 0 && countries.result.map((c) => {
                     return <CountryCard flag={c.flag} name={c.name} continent={c.continent} population={c.population} id={c.id} key={c.id} />

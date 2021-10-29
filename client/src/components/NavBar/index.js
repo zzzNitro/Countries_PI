@@ -14,8 +14,8 @@ function NavBar() {
     }, [dispatch])
     
     return (
-        <div className="containerNB">
-                <li><Link to="/home" className="linkNB">Home</Link></li>
+        <div className="nav">
+                <li><Link to="/home">Home</Link></li>
                 <li><Search /></li>
                 <li><OrdersAndFilters /></li>
                 <li><Link to='/addActivity'><button>Create an Activity</button></Link></li>
