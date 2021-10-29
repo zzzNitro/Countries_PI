@@ -18,7 +18,7 @@ function NavBar() {
                 <li><Link to="/home" className="linkNB">Home</Link></li>
                 <li><Search /></li>
                 <li><OrdersAndFilters /></li>
-                <li><Link to='/addActivity'><button>Create</button></Link></li>
+                <li><Link to='/addActivity'><button>Create an Activity</button></Link></li>
         </div>
     )
 }

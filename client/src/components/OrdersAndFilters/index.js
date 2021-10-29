@@ -30,7 +30,7 @@ function OrdersAndFilters() {
     }
 
     return (
-        <nav role="navigation" > Más filtros
+        <nav role="navigation" > More filters
             <ul>
                 <li>
                     <ul  className="dropdown" aria-label="submenu">
