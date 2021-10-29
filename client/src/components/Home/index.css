@@ -1,3 +1,6 @@
+/*
+
+
 .wrapperH {
 	margin: 0;
 	display:flex;
@@ -15,8 +18,6 @@
 
 .countriesH {
 	display: grid;
-	/* grid-template-columns: [first] 100px [line2] 100px [line3] 100px[col4-start] 100px [five] 0px[end];
-	grid-template-rows: [row1-start] 25% [row1-end] 75% [third-line] 45% [last-line] 35%; */
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: minmax(100px, auto);
 	gap: 1rem;
@@ -42,3 +43,4 @@
 	cursor: pointer;
 }
 
+*/

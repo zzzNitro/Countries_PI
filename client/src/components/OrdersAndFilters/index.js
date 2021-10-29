@@ -60,12 +60,6 @@ function OrdersAndFilters() {
                             </select>
                         </li>
                         <li>
-                            {console.log(activities)}
-                            {console.log("chao")}
-                            {console.log(page)}
-                            {console.log(name)}
-                        </li>
-                        <li>
                             <select onChange={filterByActivities}>
                                 <option key="-1" value="" label="Filter by activity"></option>
                                 
