@@ -26,9 +26,9 @@ function CountryDetails(props) {
     }
 
     return (
-        <div className="container detail">
+        <div className="container-detail">
             <Link to="/home">Home</Link>
-            <div className="expand details">
+            <div className="expand-details">
             
                {
                 country?.name ?

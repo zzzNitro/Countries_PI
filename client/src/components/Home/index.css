@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+
 .body {
 	align-items: center;
 
 }
 
-.nav {
-
-}
-
+nav {
+	float: right;
+	width: 100%;
+  }
+  
+  
 .container {
 	padding: 2px 16px;
 
